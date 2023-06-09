@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .div-box {
+            width: 250px;
+            border: 1px solid #000;
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="data2.js"></script>
+    <div class="content"></div>
+
+    <script>
+        const data = JSON.parse(dataInfo);
+        contentEl = document.querySelector(".content");
+
+
+
+        data.forEach(element => {
+
+            divEl = document.createElement("div");
+            divEl.classList.add("div-box");
+
+            const hEl = document.createElement("h3");
+            hEl.textContent = element.name;
+
+            imgEl = document.createElement("img");
+            imgEl.src = "photo.jpg";
+            imgEl.alt = "Картинка";
+
+            pEl = document.createElement("p");
+            pEl.textContent = `Страна: ${element.country}`;
+
+            p2El = document.createElement("p");
+            p2El.textContent = `Домены: ${element.domains}`;
+
+            p3El = document.createElement("a");
+            p3El.href = element.web_pages;
+            p3El.textContent = 'ссылка';
+
+            divEl.appendChild(hEl);
+            divEl.appendChild(imgEl);
+            divEl.appendChild(pEl);
+            divEl.appendChild(p2El);
+            divEl.appendChild(p3El);
+
+            contentEl.appendChild(divEl);
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
