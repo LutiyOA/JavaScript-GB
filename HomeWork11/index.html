@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <p class="title">Fetured Items</p>
+    <p class="title2">Shop for items based on what we featured in this week</p>
+
+    <script src="data.js"></script>
+
+
+    <div class="products">
+
+    </div>
+
+
+    <script>
+        const dataProduct = JSON.parse(dataProducts);
+        const productsEl = document.querySelector('.products');
+        // console.log(dataProduct);
+        dataProduct.forEach(element => {
+            const cardEl = document.createElement('div');
+            cardEl.classList.add('card');
+
+            const imgEl = document.createElement('img');
+            imgEl.classList.add('card__img');
+            cardEl.appendChild(imgEl);
+            imgEl.src = element.src;
+
+            const titleEl = document.createElement('div');
+            cardEl.appendChild(titleEl);
+            titleEl.classList.add('card__title');
+            titleEl.textContent = element.title;
+
+            const descriptionEl = document.createElement('div');
+            cardEl.append(descriptionEl);
+            descriptionEl.classList.add('card__description');
+            descriptionEl.textContent = element.description;
+
+            const priceEl = document.createElement('div');
+            cardEl.appendChild(priceEl);
+            priceEl.classList.add('card__price');
+            priceEl.textContent = `$${element.price}`;
+
+            productsEl.appendChild(cardEl);
+        });
+    </script>
+</body>
+
+</html>
